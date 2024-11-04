@@ -1,4 +1,3 @@
-// CryptoTable.jsx
 import React, { useState } from 'react'
 import { ArrowRight, ArrowLeft } from 'lucide-react'
 import { useCryptoData } from '../hooks/useCryptoData'
@@ -7,6 +6,7 @@ import LoadingSpinner from './LoadingSpinner'
 import ErrorMessage from './ErrorMessage'
 import { formatPrice } from '../utils/formatters'
 
+// Reusable components for consistent styling
 const TableHeader = ({ children, ...props }) => (
     <th
         scope="col"
@@ -30,6 +30,7 @@ const NavigationButton = ({ children, isActive, ...props }) => (
     </button>
 )
 
+// Component for mobile view section headers and values
 const MobileSection = ({ label, value }) => (
     <div className="px-4 py-2">
         <div className="text-xs font-bold text-black uppercase tracking-wider">
@@ -50,6 +51,7 @@ const CryptoTable = () => {
         currentPage,
         isLastPage,
     } = usePagination(coins)
+    // Tracks which navigation button was last clicked for highlighting
     const [activeButton, setActiveButton] = useState("next")
 
     const handlePrevious = () => {
@@ -65,6 +67,7 @@ const CryptoTable = () => {
     if (isLoading) return <LoadingSpinner />
     if (error) return <ErrorMessage message={error.message} />
 
+    // Helper function to maintain consistent total supply display
     const renderTotalSupply = (coin) => (
         <div className='flex items-baseline'>
             <div>{coin.tsupply}</div>
@@ -74,7 +77,7 @@ const CryptoTable = () => {
 
     return (
         <div className="bg-white rounded-xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] overflow-hidden">
-            {/* Desktop view */}
+            {/* Desktop view - Full table layout */}
             <div className="hidden md:block">
                 <table className="min-w-full">
                     <thead className="bg-white border-b">
@@ -110,7 +113,7 @@ const CryptoTable = () => {
                 </table>
             </div>
 
-            {/* Mobile view */}
+            {/* Mobile view - Stacked layout with repeating headers */}
             <div className="md:hidden">
                 {paginatedData.map((coin, index) => (
                     <div
@@ -151,7 +154,7 @@ const CryptoTable = () => {
                 ))}
             </div>
 
-            {/* Navigation */}
+            {/* Navigation controls with active state highlighting */}
             <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
                 {currentPage !== 1 && (
                     <NavigationButton
