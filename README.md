@@ -30,22 +30,27 @@ Crypto Price Tracker is a streamlined platform that displays real-time cryptocur
   ├── postcss.config.js
   ├── tailwind.config.js
   ├── vite.config.js
-  ├── src
-  │   ├── App.jsx
-  │   ├── main.jsx
-  │   ├── index.css
-  │   └── components
-  │       ├── CryptoTable.jsx
-  │       ├── LoadingSpinner.jsx
-  │       └── ErrorMessage.jsx
-  └── hooks
-      ├── useCryptoData.js
-      └── usePagination.js
+  └── src/
+      ├── App.jsx
+      ├── main.jsx
+      ├── index.css
+      ├── components/
+      │   ├── CryptoTable.jsx
+      │   ├── LoadingSpinner.jsx
+      │   └── ErrorMessage.jsx
+      ├── hooks/
+      │   ├── useCryptoData.js
+      │   └── usePagination.js
+      ├── utils/
+      │   └── formatters.js
+      └── api/
+          └── cryptoApi.js
   ```
 Overall:
 * Component logic is organized in the components directory
 * Custom hooks handle data fetching and pagination
 * Utility functions manage data formatting and calculations
+* API interactions are centralized in the api directory
 
 ### Development Setup
 1. Clone the repo
