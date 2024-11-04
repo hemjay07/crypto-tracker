@@ -7,7 +7,3 @@ export const formatPrice = (price) => {
     }).format(price)
 }
 
-export const formatPercentage = (percentage) => {
-    const num = parseFloat(percentage)
-    return `${num > 0 ? '+' : ''}${num.toFixed(2)}%`
-}

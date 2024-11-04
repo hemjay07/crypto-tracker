@@ -22,13 +22,18 @@ export const usePagination = (data = [], itemsPerPage = 10) => {
         setCurrentPage(prev => Math.max(prev - 1, 1))
     }
 
+    const startIndex = (currentPage - 1) * itemsPerPage
+    const endIndex = Math.min(currentPage * itemsPerPage, data.length)
+    const isLastPage = currentPage === totalPages
+
     return {
         currentPage,
         totalPages,
         paginatedData,
         goToNextPage,
         goToPreviousPage,
-        startIndex: (currentPage - 1) * itemsPerPage,
-        endIndex: Math.min(currentPage * itemsPerPage, data.length),
+        startIndex,
+        endIndex,
+        isLastPage,
     }
 }
